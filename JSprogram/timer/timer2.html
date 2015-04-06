@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <script type="text/javascript" src="timer.js"> </script>
+ <script type="text/javascript">
+ <!--		
+		if(window.attachEvent){
+			console={} 
+			console.log=function(){};
+		}
+ //-->
+ </script>
+ <style type="text/css">
+	.ani{
+		width:100px;
+		height:100px;
+		background:green;
+		position:relative;	
+	}
+ </style>
+ <!--[if lte ie 6]>    <![endif]-->
+ </head>
+
+ <body>
+		<button onclick='Timer.pause();'>stop </button>
+		<button onclick='Timer.start();'>start</button>
+
+		<div id="anione" class="ani" style=""></div>
+ </body>
+</html> 
+<script type="text/javascript">
+<!--
+	
+	//直接构建一个动画对象
+	moveObj=(function(){
+		var startTime=0,
+		nowTime=0,
+		duration=3000, //总时间
+
+		from=0	,	//起始值
+		to=300 ,     //目标值  style.left=300px
+		nowValue=0,		//当前值
+
+		plus=5,      //每次移动距离 1像素
+		prop='width',
+
+		max,
+		min;
+
+		return{
+			step:function(){
+				if(startTime===0){
+					startTime=Number(new Date)
+				}
+				nowTime=Number(new Date)
+
+				nowValue=from+(nowTime-startTime)*(to-from)/duration
+
+				 min=Math.min(from,to)
+				 max=Math.max(from,to)
+				nowValue=nowValue<min? min:
+						 nowValue>max? max:
+						 nowValue;
+				
+				console.log(nowValue)
+				
+				document.getElementById('anione').style.left=nowValue+'px'
+
+				if(nowTime>startTime+duration || nowValue==to){
+					return false
+				}
+
+				return true;
+				
+				
+			}		
+		}
+	})();
+	
+	Timer.setIntervalTime(20)
+	Timer.play(moveObj)
+
+	//然后高度变化 无时间限制
+	Timer.play({
+		queue:true,
+		step:function(){
+				var d=document.getElementById('anione'),
+					v=Number(d.style.top.replace('px',''))
+					v+=20
+				 d.style.top=v+'px'
+				 console.log(d.style.top)
+				 if(v>=100){
+					return false;
+				 }
+
+				 return true;
+			}
+		}		
+	)
+
+	//动画结束 改变背景颜色
+	Timer.play({
+				queue:true,
+				step:function(){
+						var d=document.getElementById('anione')
+						d.style.background='red'
+						d.innerHTML="FINISH"
+						d=null		
+				}
+			})
+
+
+
+
+//-->
+</script>

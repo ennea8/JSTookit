@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen">
+	<script type="text/javascript" src="../lib/qunit.js"></script>
+
+	<script type="text/javascript" src="E.lang.js"></script>
+
+	<script type="text/javascript">
+	<!--
+		module("E.lang之 Class");
+		
+		test('E.extendClass-1',function(){
+			function F1() { }  
+			F1.prototype.getName = function() { return 'F1'; }; 
+			
+			function F2() { }  
+			E.extendClass(F2,F1)
+			F2.prototype.getName = function() { return this.uber('getName') + '-F2'; }; 
+			
+			function F3() { }  
+			E.extendClass(F3,F2) 
+			F3.prototype.getName = function() { return this.uber('getName') + '-F3'; }; 
+
+			f3=new F3()
+			same(f3.getName(),'F1-F2-F3')
+
+			f3.getName=function() { return this.uber('getName') + '-FF3'; };
+			same(f3.getName(),'F1-F2-F3-FF3','')
+
+
+		})
+
+
+		test('E.extendClass-2',function(){
+			function F1() { }  
+			F1.prototype.getName = function() { return 'F1'; };  
+
+			function F2() { }  
+			E.extendClass(F2,F1) 
+			  
+			function F3() { }  
+			E.extendClass(F3,F2) 
+			  
+			function F4() { }  
+			E.extendClass(F4,F3) 
+
+			function F5() { } 
+			F5.prototype.getName = function() { return this.uber('getName') + '-F5'; };
+			E.extendClass(F5,F4) 
+
+			function F6() { }  
+			F6.prototype.getName = function() { return this.uber('getName') + '-F6'; };
+			E.extendClass(F6,F5) 
+			
+
+			var f6 = new F6();  
+			f6.getName=function(){return this.uber('getName') + '-FF6';}
+
+			same(f6.getName(),'F1-F5-F6-FF6','自身不断层 直接父类也不断层'); //
+
+
+			var f5 = new F5(); 
+			same(f5.getName(),'F1-F5','自身不断层 直接父类断层')
+
+				
+			function F7() { }  
+			E.extendClass(F7,F6)
+			function F8() { }  
+			E.extendClass(F8,F7)
+			f8=new F8()
+			same(f8.getName(),'F1-F5-F6','自身断层 直接父类断层');
+		
+		})
+		
+		test('E.extendClass-3 抛出异常',function(){
+			function F1() { }  
+			F1.prototype.getName = function() {  return this.uber('getName') + ',F1';}; 
+			
+			function F2() { } 
+			E.extendClass(F2,F1) 
+
+			f2=new F2()
+			f2.getName() //抛出异常
+
+
+		})
+
+		test('E.extendClass-4 抛出异常',function(){
+			function F1() { }  			
+			
+			function F2() { } 
+			E.extendClass(F2,F1) 
+
+			function F3() { } 
+			E.extendClass(F3,F2) 
+			F3.prototype.getAge = function() {  return this.uber('getAge') + ',F3';}; 
+
+			f3=new F3()
+			f3.getAge() //抛出异常
+
+		})
+
+		test('ff',function(){
+		 function A(){}
+		 A.prototype.hello=function(){ 
+			return 'helloA';
+		 }
+
+		 function B(){}
+		 B.prototype.hello=function(){
+			return this.uber('hello')+'helloB';
+		 }
+
+		 E.extendClass(B,A)
+
+		 b=new B()
+		 same(b.hello(),'helloAhelloB') // output 'helloAhelloB'
+		
+		})		
+		
+
+		test('E.defineClass',function(){
+			A=function(){}
+			A.prototype.say=function(){ return 'helloA'}
+			A.prototype.name='A'
+			
+			B=E.defineClass({
+				init:function(){
+					this.name='B'
+				},
+				say:function(){
+					return this.uber('say')+'-helloB'
+				},
+				sayName:function(){
+					return this.name;
+				}
+			},A)
+
+			b=new B()
+			same(b.say(),'helloA-helloB','uber测试')
+			same(b.sayName(),'B','init测试')
+
+
+		})
+
+
+	//-->
+	</script>
+</head>
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="script/$.js"></script>
+<script type="text/javascript" src="script/widget.js"></script>
+<script type="text/javascript" src="script/slider.js"></script>
+<script type="text/javascript" src="script/debug.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+		$(".slider").slider({percent:90})	
+
+		$(".slider3").slider({percent:60})
+	})
+</script>
+
+<link href="style/reset.css" rel="stylesheet" type="text/css" />
+<link href="style/ui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+/*共用样式*/
+.slider{position:relative}
+.slider .bar{display:block;position:absolute}
+.slider .passed{position:absolute}
+
+/*自定义*/
+
+/*red-blue-slider*/
+.red-blue-slider{width:635px;height:39px;background:url(image/slider/red_blue_bg.gif) no-repeat left -40px;}
+.red-blue-slider .bar{width:53px;height:39px;background:url(image/slider/red_blue_bg.gif) no-repeat left -80px;top:-10px;}
+.red-blue-slider .passed{height:39px; width:100px;background:url(image/slider/red_blue_bg.gif) no-repeat right top;right:0;}
+
+/*自定义*/
+.shade-slider{width:38px;height:298px;background:url(image/slider/shade_bg.png) 5px 0 no-repeat;}
+.shade-slider .bar{height:31px;width:38px;background:url(image/slider/shade_bg.png) -76px 0 no-repeat;}
+.shade-slider .passed{width:38px;background:url(image/slider/shade_bg.png) -33px bottom no-repeat;bottom:0;}
+
+</style>
+</head>
+
+<body>
+
+<div class="slider shade-slider" shape="v" style="margin-left:300px;">
+    <div class="passed"></div>
+    <a href="javascript:void(0);" class="bar"></a>
+</div>    
+
+<div class="slider red-blue-slider" shape="h" style="margin:28px 10px 11px;">
+    <div class="passed"></div>
+    <a href="javascript:void(0);" class="bar"></a>
+</div>
+
+</body>
+</html>

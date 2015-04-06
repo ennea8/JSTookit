@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<script type="text/javascript" src="script/$.js"></script>
+<script type="text/javascript" src="script/widget.js"></script>
+<script type="text/javascript" src="script/droplist.js"></script>
+
+
+<STYLE TYPE="text/css">
+	#droplist_001{
+		border:solid aaa 1px;
+	
+	}
+	#droplist_001 tr td{
+	
+		border-bottom:solid blue 1px;
+	}
+</STYLE>
+<script type="text/javascript">
+<!--
+	$(function(){
+	
+		$('#edit1').droplist({
+			data:['1sdfsdf',
+					'2sdfasdf',
+					'3sdfasdf',
+					'4sdfsdf'
+				]			
+			})
+
+		
+		$('#edit2').droplist(
+		{
+			data:['1你好瑞特','你好2','你好2','你好2']	
+		})
+		
+	})
+//-->
+</script>
+
+ </HEAD>
+
+ <BODY>
+ 
+<style type="text/css">
+	.edit{
+		width:100px;
+	}
+	#edit1{
+		border:dashed red 1px;
+	}
+	#edit2{
+		border:dashed blue 1px;
+	}
+</style>
+
+<div id="edit1" class="edit" contenteditable></div>
+
+<br/><br/><br/><br/><br/>
+<div id="edit2" class="edit" contenteditable></div>
+
+ </BODY>
+</HTML>

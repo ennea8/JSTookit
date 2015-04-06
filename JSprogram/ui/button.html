@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<script type="text/javascript" src="script/$.js"></script>
+<script type="text/javascript" src="script/widget.js"></script>
+<script type="text/javascript" src="script/button.js"></script>
+<STYLE TYPE="text/css">
+  /*-----------------------完成按钮样式-----------------------*/
+a.finish{
+float:left; width:100px; 
+height:34px; line-height:100px; 
+overflow:hidden; 
+background:url(image/button/button.gif) no-repeat -102px 0;
+margin:0 5px 10px 25px; _margin:0 5px 10px 25px;
+display:block;}
+a.finish:hover{ background-position:-102px -34px;}
+a.finish-disable,a.finish-disable:hover{background-position:-102px -68px;}
+
+/*-----------------------下一步按钮样式-----------------------*/
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	$(function(){
+
+		$(".image-button")
+			.filter(".finish")
+				.button({tClass:"finish-disable"})
+				.bind("button:click",function(){
+					alert('i am clicked')
+					$(this).button("disable")
+				}).end()
+		
+	})
+
+//-->
+</SCRIPT>
+
+ </HEAD>
+
+ <BODY>
+
+	<a class="image-button finish"  href="javascript:void(0);"></a>
+
+
+ </BODY>
+</HTML>

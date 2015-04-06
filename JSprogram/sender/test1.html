@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <script type="text/javascript" src="Sender.js"> </script>
+ <script type="text/javascript">
+ <!--
+
+	s=new Sender()
+  
+	observerA=(function(){  	
+		function doA(){ alert('observerA 起床')}
+		function doB(){ alert('刷牙')}
+		 
+		return{
+			receive:function(msg){
+				switch(msg){
+					case '起床':
+						doA()
+						break;
+					case '吃饭':
+						doB()
+						break;
+					}
+			}
+		  }
+  
+	})();
+  
+  observerB=function(msg){
+  		alert('observerB'+msg)
+  }
+  
+  s.addReceiver('起床',observerA,observerB)
+  
+  s.sendMessage('起床')
+
+
+
+ //-->
+ </script>
+ <style type="text/css">
+
+ </style>
+ <!--[if lte ie 6]>    <![endif]-->
+ </head>
+
+ <body>
+
+ </body>
+</html> 

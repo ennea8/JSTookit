@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>jQuery UI Example Page</title>
+		<script type="text/javascript" src="script/$.js"></script>
+		<script type="text/javascript" src="script/widget.js"></script>
+		<script type="text/javascript" src="script/debug.js"></script>
+
+		<script type="text/javascript" src="script/vote.js"></script>
+
+
+
+		<script type="text/javascript">
+		$(function(){			
+			//使用方法
+			$(".vote .stars")
+				.vote({value:3})
+				.bind('vote:value-set',function(e,x){
+					alert(x)
+					alert('vote:value-set')
+				})
+				;
+
+			$(".vote3 .stars").vote({
+									value:3,
+									img_default:'handicon2.gif',
+									img_hover:'handicon1.gif',
+									img_selected:'handicon1.gif'
+									});
+		})
+		</script>
+		<style type="text/css">
+
+		</style>	
+	</head>
+	<body>
+
+	<div class="vote" id="vote1">评价:
+			<span class="stars">
+				<a  class="" href="javascript:void(0)">
+				<img class="star1" src="image/vote/star-selected.gif" title='sdfsd分v都是'>
+				</a>	
+				
+				<a  class="" href="javascript:void(0)">
+				<img class="star2" src="image/vote/star-selected.gif" title='sdfsd分v都是'>
+				</a>	
+
+				<a  class="" href="javascript:void(0)">
+				<img class="star3" src="image/vote/star-selected.gif">
+				</a>	
+
+				<a  class="" href="javascript:void(0)">
+				<img class="star4" src="image/vote/star-default.gif">
+				</a>	
+				
+				<a  class="" href="javascript:void(0)">
+				<img class="star5" src="image/vote/star-default.gif">
+				</a>	
+			
+			</span>
+
+			<hr>
+
+			<span class="pl" id="rateword"></span>
+	</div>
+
+
+	<div class="vote" id="vote2">评价:
+			<span class="stars">
+				<a  class="" href="javascript:void(0)">
+				<img class="star1" src="image/vote/star-selected.gif">
+				</a>	
+				
+				<a  class="" href="javascript:void(0)">
+				<img class="star2" src="image/vote/star-selected.gif">
+				</a>	
+
+				<a  class="" href="javascript:void(0)">
+				<img class="star3" src="image/vote/star-selected.gif">
+				</a>	
+
+				<a  class="" href="javascript:void(0)">
+				<img class="star4" src="image/vote/star-default.gif">
+				</a>	
+			</span>
+
+			<hr>
+
+			<span class="pl" id="rateword"></span>
+	</div>
+
+
+	<div class="vote3" id="vote3">评价:
+			<span class="stars">
+				<a  class="" href="javascript:void(0)">
+				<img class="star1" src="image/vote/star-selected.gif">
+				</a>	
+				
+				<a  class="" href="javascript:void(0)">
+				<img class="star2" src="image/vote/star-selected.gif">
+				</a>	
+
+				<a  class="" href="javascript:void(0)">
+				<img class="star3" src="image/vote/star-selected.gif">
+				</a>	
+
+				<a  class="" href="javascript:void(0)">
+				<img class="star4" src="image/vote/star-default.gif">
+					<a  class="" href="javascript:void(0)">
+				<img class="star5" src="image/vote/star-default.gif">
+				</a>	
+				</a>	
+			</span>
+
+			<hr>
+
+			<span class="pl" id="rateword"></span>
+	</div>
+
+	</body>
+</html>
+
+

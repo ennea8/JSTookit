@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <script type="text/javascript" src="core.js"> </script>
+  <script type="text/javascript" src="sizzle.js"> </script>
+
+
+ <style type="text/css">
+
+ </style>
+ <!--[if lte ie 6]>    <![endif]-->
+ </head>
+
+ <body>
+		<div id="d1">dddd</div>
+		<div id="d2">dddd</div>
+		<div id="d3">dddd</div>
+ </body>
+</html> 
+
+ <script type="text/javascript">
+ <!--
+	//简单的插件
+	E.plug('red',function(){
+		this.each(function(){
+			this.style.color='red';
+		})
+	
+	})
+	
+	E('div').red()
+
+	//E.plug({
+	//	red:function(){} //命名重复 抛出异常
+	//})
+
+
+ //-->
+ </script>

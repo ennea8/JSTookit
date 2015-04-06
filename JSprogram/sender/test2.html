@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <script type="text/javascript" src="Sender.js"> </script>
+ <script type="text/javascript">
+ <!--
+		//senderA senderB同时又是接受者
+
+		var senderA=new Sender((function(){
+			//privte
+			
+			return function(msg){
+				var self=this;
+				
+				switch (msg)
+				{
+				 case '5分钟后':
+					alert('A收到'+msg)
+					this.addReceiver('5分钟到了',senderB)
+					setTimeout(function(){
+						self.sendMessage('5分钟到了')
+					},1000)	
+					break;
+				}
+			}	
+		
+		})());
+
+		//console.log(a)
+		var senderB=new Sender((function(){
+			//privte
+
+			return function(msg){
+				switch (msg)
+				{
+				 case '起床':
+					alert('B收到 '+msg)
+				    this.addReceiver('5分钟后',senderA)
+					this.sendMessage('5分钟后',senderA)
+					break;
+				 case '5分钟到了':
+					alert('A收到 '+msg)
+					return;
+					break;				
+				}
+			}	
+
+		})());
+
+		senderA.addReceiver('起床',senderB)
+		senderA.sendMessage('起床')
+		
+
+
+
+ //-->
+ </script>
+ <style type="text/css">
+
+ </style>
+ <!--[if lte ie 6]>    <![endif]-->
+ </head>
+
+ <body>
+
+ </body>
+</html> 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <script type="text/javascript" src="timer.js"> </script>
+ <script type="text/javascript">
+ <!--		
+		if(window.attachEvent){
+			console={} 
+			console.log=function(){};
+		}
+
+			t=Timer			
+			t.play(function(){
+				var name='hua',
+					i=0
+				return function(){
+					console.log(name)
+
+					i++
+					if(i==5) return false;
+					return true;
+				}
+			}()) 
+
+			console.log(t)
+
+			 t.play(function(){
+				//t.stop()
+				var name='撒地方撒',
+					i=0	
+				return function(){
+					console.log(name)
+					i++
+					if(i==5) return false;
+					return true;
+				}
+			}()) 
+
+
+			 t.play({
+				queue:true,
+				step:function(){
+					console.log('gogogo')
+				}
+			})
+
+			t.play({
+				queue:false,
+				step:function(){
+					console.log('gogogo=======')
+				}
+			}) 
+ //-->
+ </script>
+ <style type="text/css">
+
+ </style>
+ <!--[if lte ie 6]>    <![endif]-->
+ </head>
+
+ <body>
+		<button onclick='t.pause();'>stop </button>
+		<button onclick='t.start();'>start</button>
+ </body>
+</html> 

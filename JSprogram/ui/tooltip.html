@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<script type="text/javascript" src="script/$.js"></script>
+<script type="text/javascript" src="script/widget.js"></script>
+<script type="text/javascript" src="script/button.js"></script>
+<script type="text/javascript" src="script/step.js"></script>
+<script type="text/javascript" src="script/tooltip.js"></script>
+
+
+<STYLE TYPE="text/css">
+  /*-----------------------完成按钮样式-----------------------*/
+a.finish{ float:right; width:100px; height:34px; line-height:100px; overflow:hidden; background:url(image/button/button.gif) no-repeat -102px 0; margin:0 5px 10px 25px; _margin:0 5px 10px 25px;
+display:block;}
+a.finish:hover{ background-position:-102px -34px;}
+a.finish-disable,a.finish-disable:hover{background-position:-102px -68px;}
+
+/*-----------------------下一步按钮样式-----------------------*/
+a.nextstep{ float:right; width:100px; height:34px; line-height:100px; overflow:hidden; background:url(image/button/button.gif) no-repeat -1px 0; margin:0 5px 10px 25px; _margin:0 5px 10px 25px;}
+a.nextstep:hover{ background-position:-1px -34px;}
+a.nextstep-disable,a.nextstep-disable:hover{background-position:-1px -68px;}
+
+/*-----------------------加号按钮样式-----------------------*/
+a.plus{ float:left; width:52px; height:34px; line-height:100px; overflow:hidden; background:url(image/button/button.gif) no-repeat -404px 0; margin-bottom:10px;}
+a.plus:hover{ background-position:-404px -34px;}
+a.plus-disable,a.plus-disable:hover{background-position:-404px -68px;}
+
+/*-----------------------确定按钮样式-----------------------*/
+a.enter{ display:block; width:100px; margin:11px auto 0; height:34px; line-height:100px; overflow:hidden; background:url(image/button/button.gif) no-repeat;}
+
+	.step{
+		width:200px;
+		height:100px;
+		margin:2px;
+	}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	//按钮初始化
+	$(function(){
+		$(".image-button")
+			.filter(".finish")//完成
+				.button({tClass:"finish-disable",state:"disable"})
+				.bind("button:click",function(){
+					$(this).button("disable")
+				}).end()
+			.filter(".nextstep")//下一步
+				.button({tClass:"nextstep-disable",state:"disable"})
+				.bind("button:click",function(e){
+					$("body").step("stepNext") //调用下一步方法
+					//return false;
+				}).end()
+			.filter(".plus")//添加
+				.button({tClass:"plus-disable",state:"enable"})
+				.bind("button:click",function(){
+					//alert("hello")
+					//$(this).button("disable")
+				})
+		
+		$(".nextstep",'.step1').button("enable")
+	})
+
+	// 下一步
+	$(function(){
+		$("body")
+			.step({stepAll:4,stepBegin:1})
+			.bind("step:next",function(e,currentStep,nextStep){
+				//alert(e.type)
+
+				//处理当前步
+				$(".step"+(currentStep))
+					.css({border:'solid gray 1px'})
+					.find(".nextstep")
+						.button("disable");
+				
+				//激活下一步
+				$(".step"+(nextStep))
+				.css({border:'solid red 1px'})
+				.find(".nextstep")
+					.button("enable")
+
+				//alert("nextStep "+nextStep)
+				//tip显示 直接调用其方法 但最好用消息 事件形式
+				//$(".step"+(nextStep)).tooltip("show")
+				//$(".step4").tooltip("show")
+				$(".step"+(nextStep)).trigger("tip:show")
+				//return false;
+			})
+			.bind("step:end",function(){			
+				alert("step:end")
+			})
+	})
+
+	//tip模块
+	$(function(){
+		$(".step")
+		.filter(".step1")
+			.tooltip({html:"aaaa"})
+			.end()
+		.filter(".step2")
+			.tooltip({html:"bbb"})
+			.end()
+		.filter(".step3")
+			.tooltip({html:"bbbgggggggggggggggg"})
+			.end()
+		.filter(".step4")
+			.tooltip({html:"<div style='width:100px;height:200px;border:solid red 1px;'>sdfsdfsdf<div>"}).end()
+		.click(function(){
+			$(this).trigger("tip:show")
+		})
+		;	
+	
+
+		$("#helpswitch").click(function(){				
+			if($(this).attr("checked")){
+				$(".step").tooltip("disable")	
+				//alert($(this).attr("checked"))
+			}else{
+				$(".step").tooltip("enable")	
+				//alert($(this).attr("checked"))
+			}
+		})
+		
+
+
+	})
+//-->
+</SCRIPT>
+
+ </HEAD>
+
+ <BODY>
+ <DIV class="step step1">sdfsd
+  
+	<a class="image-button nextstep"  href="javascript:void(0);"></a>
+	<a class="image-button plus"  href="javascript:void(0);"></a>
+</DIV>
+<DIV class="step step2">sdfdsf
+	<a class="image-button nextstep"  href="javascript:void(0);"></a>
+	<a class="image-button plus"  href="javascript:void(0);"></a>
+  </DIV>
+<DIV class="step step3">sdfsd
+	<a class="image-button nextstep"  href="javascript:void(0);"></a>
+	<a class="image-button plus"  href="javascript:void(0);"></a>
+</DIV>
+<DIV class="step step4">sdfsd
+	<a class="image-button nextstep"  href="javascript:void(0);"></a>
+	<a class="image-button plus"  href="javascript:void(0);"></a>
+</DIV>
+
+<div>
+<INPUT TYPE="checkbox" NAME="helpswitch" id="helpswitch">关闭tips</input>
+<div onclick="$('.step4').tooltip('show')">step4 tips</div>
+<div>
+<hr/>
+<style type="text/css">
+	#edit1{
+		border:dashed red 1px;
+	}
+</style>
+<script type="text/javascript">
+<!--
+	$(function(){
+	
+		$('#edit1').tooltip({
+			html:'<span class="">bbbgggggggggggggggg</span><br/><span class="">sfsdf</span>',
+			direction:"top",
+			tipid:'droplist_001'})
+		.click(function(){
+		
+			$(this).tooltip('show')
+
+			$('#droplist_001 span').click(function(){
+		
+				alert($(this).html())
+				$('#edit1').tooltip('hide')
+			})
+		})
+		.blur(function(){
+			//$(this).tooltip('hide')
+			//alert($('#droplist_001 span').length)
+		})
+		
+		
+	
+	})
+//-->
+</script>
+<div id="edit1" class="" contenteditable>
+	
+</div>
+ </BODY>
+</HTML>

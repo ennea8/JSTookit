@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen">
+	<script type="text/javascript" src="../lib/qunit.js"></script>
+
+	<script type="text/javascript" src="E.lang.js"></script>
+
+	<script type="text/javascript">
+	<!--
+		module("E.lang之 E.mix");
+		test('E.mix two',function(){
+			var a={},
+				aa={}
+				b={
+				name:'bbb',
+				age:'001'
+			}
+
+			E.mix(a,b)	
+			same(a.name+a.age,'bbb001')
+
+			
+			E.mix(aa,b,['name'])
+			same(aa.name,'bbb')
+			same(aa.age,undefined)
+
+
+		})
+		test('E.mix one',function(){
+			var a={}
+
+			a.mix=E.mix
+
+			a.mix({
+				name:'bbb',
+				age:'001'			
+			})
+
+			same(a.name+a.age,'bbb001')
+
+
+
+		})
+
+		test('E.mix',function(){
+			var a={},
+				b={
+					name:'bbb',
+					age:'001'
+				}
+
+
+
+		})
+
+		test('E.mix',function(){
+			var a={},
+				b={
+				name:'bbb',
+				age:'001'
+			}
+
+
+
+		})
+
+
+
+
+
+
+	//-->
+	</script>
+</head>
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup</div>
+</body>
+</html>

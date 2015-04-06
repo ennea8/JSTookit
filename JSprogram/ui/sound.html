@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <SCRIPT type="text/javascript" src="script/$.js"> </SCRIPT>
+   <SCRIPT type="text/javascript" src="script/widget.js"> </SCRIPT>
+  <SCRIPT type="text/javascript" src="script/sound.js"> </SCRIPT>
+
+ <SCRIPT type="text/javascript">
+ <!--
+	$(function(){
+	var sound={
+		src:{
+			step1:"image/sound/1.swf",
+			step2:"image/sound/1.swf",
+			step3:"image/sound/1.swf",
+			step4:"image/sound/1.swf"
+		},
+
+		init:function(){
+		
+			var self=this;
+			$.each(['step1','step2','step3','step4'],function(i,stepName){
+			
+				$('.'+stepName).sound({src:self.src[stepName]})
+
+				//alert(self.src[stepName])
+				$('.'+stepName).bind("click",function(){
+					
+					//alert('play')
+					$('.'+stepName).sound('play');
+				})
+			})
+		
+		}
+		
+	
+	}
+	sound.init()
+	})
+ //-->
+ </SCRIPT>
+ <STYLE TYPE="text/css">
+	
+ </STYLE>
+ </HEAD>
+
+ <BODY>
+
+	<button class='step1''>fsd </button>
+	<button class='step2''>fsd </button>
+	<button class='step3''>fsd </button>
+	<button class='step4''>fsd </button>
+
+	<span id='sound'></span>
+ </BODY>
+</HTML>

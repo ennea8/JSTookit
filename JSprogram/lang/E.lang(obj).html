@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen">
+	<script type="text/javascript" src="../lib/qunit.js"></script>
+	<script type="text/javascript" src="E.lang.js"></script>
+
+	<script type="text/javascript">
+	<!--
+		module("E.lang 之 obj");
+		test('E.extendObj',function(){
+			var obj1={
+				name:'huahua'
+			}
+			var obj2=E.extendObj(obj1)
+			var undefined
+
+			same(obj2.name,'huahua')
+			
+			obj2.name="gggggg"
+			same(obj1.name,'huahua')
+			same(obj2.name,'gggggg')
+
+			obj1.name=undefined
+			same(obj1.name,undefined)
+			same(obj2.name,'gggggg')
+
+			obj2.name="kkkkkk"
+			same(obj1.name,undefined)
+			same(obj2.name,'kkkkkk')
+
+
+		})
+
+		test('E.defineObj',function(){
+			var obj1={
+				name:'huahua'
+			}
+
+			var obj2=E.defineObj({
+				name:'jack',
+				age:10
+				
+			},obj1)
+
+			same(obj2.name,'jack')
+			same(obj2.age,10,'age')
+
+
+			obj2.name=undefined				
+			same(obj2.name,undefined)
+
+			delete obj2.name
+			same(obj2.name,'huahua','delete obj2.name')
+			
+			obj1.name='dddddddd'
+			same(obj2.name,'dddddddd','obj1.name=dddddddd')
+		
+		})
+
+		
+
+
+
+
+
+
+	//-->
+	</script>
+</head>
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup</div>
+</body>
+</html>
